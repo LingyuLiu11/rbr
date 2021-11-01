@@ -10,7 +10,7 @@
 User.create!(name:  "asd",
     email: "asd@a.com",
     password:              "123456",
-    password_confirmation: "123456",
+    password_confirmation: "foobar",
     admin: true)
 
 # Generate a bunch of additional users.

@@ -71,10 +71,10 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless current_user?(@user)
     end
 
-    # def destroy
-    #   log_out if logged_in?
-    #   redirect_to root_url
-    # end
+    def destroy
+      log_out if logged_in?
+      redirect_to root_url
+    end
 
     def admin_user
       redirect_to(root_url) unless current_user.admin?
