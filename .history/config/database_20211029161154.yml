@@ -80,8 +80,6 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  adapter: postgresql
-  encoding: unicode
   <<: *default
   database: rbr_production
   username: rbr
