@@ -19,7 +19,7 @@ module SessionsHelper
     def current_user
       if (user_id = session[:user_id])
         user = User.find_by(id: user_id)
-        if user && session[:session_token] == user.session_token
+        if user && session[:session_token] == FILL_IN
           @current_user = user
         end
       elsif (user_id = cookies.encrypted[:user_id])
@@ -41,17 +41,8 @@ module SessionsHelper
       !current_user.nil?
     end
 
-    # Forgets a persistent session.
-  def forget(user)
-    user.forget
-    cookies.delete(:user_id)
-    cookies.delete(:remember_token)
-  end
-
-  # Logs out the current user.
-  def log_out
-    forget(current_user)
-    reset_session
-    @current_user = nil
-  end
+    def log_out
+        reset_session
+        @current_user = nil
+      end
   end

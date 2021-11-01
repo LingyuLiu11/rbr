@@ -56,11 +56,6 @@ class UsersController < ApplicationController
     # Confirms the correct user.
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
-
-    def destroy
-      log_out if logged_in?
-      redirect_to root_url
+      redirect_to(root_url) unless @user == current_user
     end
 end

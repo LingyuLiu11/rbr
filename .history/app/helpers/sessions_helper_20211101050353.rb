@@ -1,12 +1,12 @@
 module SessionsHelper
 
-  # Logs in the given user.
-  def log_in(user)
-    session[:user_id] = user.id
-    # Guard against session replay attacks.
-    # See https://bit.ly/33UvK0w for more.
-    session[:session_token] = user.session_token
-  end
+    # Logs in the given user.
+    def log_in(user)
+      session[:user_id] = user.id
+      # Guard against session replay attacks.
+      # See https://bit.ly/33UvK0w for more.
+      session[:session_token] = user.session_token
+    end
   
     # Remembers a user in a persistent session.
     def remember(user)
@@ -41,17 +41,8 @@ module SessionsHelper
       !current_user.nil?
     end
 
-    # Forgets a persistent session.
-  def forget(user)
-    user.forget
-    cookies.delete(:user_id)
-    cookies.delete(:remember_token)
-  end
-
-  # Logs out the current user.
-  def log_out
-    forget(current_user)
-    reset_session
-    @current_user = nil
-  end
+    def log_out
+        reset_session
+        @current_user = nil
+      end
   end
